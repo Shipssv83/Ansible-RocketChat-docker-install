@@ -1,0 +1,27 @@
+---
+- name: include server install play
+  ansible.builtin.import_playbook: server-install.yml
+
+- name: include docker install play
+  ansible.builtin.import_playbook: docker-install.yml
+  
+- name: rocketchat docker install
+  become: true
+  hosts: '{{ host }}'
+  vars:
+    fqdn: ecxexample.com
+    server_name: "rocket.{{ fqdn }}"
+    rocket_root_url: "https://rocket.{{ fqdn }}"
+
+  roles:
+  - roles/rocketchat-docker-install
+
+  tasks: 
+
+  - name: configure ufw web route
+    community.general.system.ufw:
+      rule: allow
+      port: 3000
+      route: true
+      proto: tcp
+      comment: allow web route
