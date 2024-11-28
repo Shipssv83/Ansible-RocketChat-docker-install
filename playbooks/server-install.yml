@@ -5,7 +5,7 @@
   vars:
     env: "prod"
     env_color: "033[0;33m"
-    timezone: Europe/Warsaw
+    timezone: "Europe/Warsaw"
 
   roles:
     - roles/server-install
