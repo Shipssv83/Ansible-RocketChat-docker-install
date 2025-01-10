@@ -2,10 +2,10 @@
 - name: include server install play
   ansible.builtin.import_playbook: server-install.yml
 
-- name: include docker install play
-  ansible.builtin.import_playbook: docker-install.yml
+- name: include project install play
+  ansible.builtin.import_playbook: project-install.yml
   
-- name: rocketchat docker install
+- name: rocketchat project install
   become: true
   hosts: '{{ host }}'
   vars:
@@ -14,7 +14,7 @@
     rocket_root_url: "https://rocket.{{ fqdn }}"
 
   roles:
-  - roles/rocketchat-docker-install
+  - roles/rocketchat-project-install
 
   tasks: 
 

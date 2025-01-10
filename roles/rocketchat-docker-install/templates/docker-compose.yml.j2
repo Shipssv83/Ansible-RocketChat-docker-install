@@ -15,7 +15,7 @@ services:
         local?replicaSet=${MONGODB_REPLICA_SET_NAME:-rs0}}"
         #      ROOT_URL: ${ROOT_URL:-http://localhost:${HOST_PORT:-3000}}
         #      PORT: ${PORT:-3000}
-        #      DEPLOY_METHOD: docker
+        #      DEPLOY_METHOD: project
         #      DEPLOY_PLATFORM: ${DEPLOY_PLATFORM:-}
         #      REG_TOKEN: ${REG_TOKEN:-}
     depends_on:
@@ -26,7 +26,7 @@ services:
       - "${BIND_IP:-0.0.0.0}:${HOST_PORT:-3000}:${PORT:-3000}"
 
   mongodb:
-    image: docker.io/bitnami/mongodb:${MONGODB_VERSION:-7.0}
+    image: project.io/bitnami/mongodb:${MONGODB_VERSION:-7.0}
     restart: always
     volumes:
       - mongodb_data:/bitnami/mongodb
