@@ -15,10 +15,10 @@
     mode: '{{ item.mode }}'
   loop: 
     - { src: env.j2, dest: '{{ path }}/.env', mode: '644' }
-    - { src: project-compose.yml.j2, dest: '{{ path }}/project-compose.yml', mode: '644' }
+    - { src: docker-compose.yml.j2, dest: '{{ path }}/docker-compose.yml', mode: '644' }
 
-- name: run project-compose up
-  ansible.builtin.shell: project-compose up --build -d
+- name: run docker-compose up
+  ansible.builtin.shell: docker-compose up --build -d
   args:
     chdir: '{{ path }}'
   ignore_errors: true
