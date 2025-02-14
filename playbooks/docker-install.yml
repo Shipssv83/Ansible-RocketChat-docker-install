@@ -1,21 +1,21 @@
 ---
-  - name: project, project-compose install
+  - name: docker, docker-compose install
     hosts: '{{ host }}'
     become: true
 
     vars:
       pip_install_packages:
-        - name: project
-        - name: project-compose
+        - name: docker
+        - name: docker-compose
         - name: setuptools
       docker_install_compose: true
       docker_compose_version: "v2.29.6"
       docker_compose_arch: "{{ ansible_architecture }}"
-      docker_compose_path: /usr/local/bin/project-compose
+      docker_compose_path: /usr/local/bin/docker-compose
       docker_users:
         - USER-NAME
 
     roles:
     - geerlingguy.pip
-    - geerlingguy.project
-    - roles/firewall.tf-ufw-project
+    - geerlingguy.docker
+    - roles/firewall.tf-ufw-docker
