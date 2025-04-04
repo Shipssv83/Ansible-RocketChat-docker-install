@@ -18,4 +18,3 @@
     roles:
     - geerlingguy.pip
     - geerlingguy.docker
-    - roles/firewall.tf-ufw-docker
